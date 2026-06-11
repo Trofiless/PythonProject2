@@ -4,11 +4,8 @@ def filter_by_state(
 ) -> list[dict]:
     """Фильтрация операций по статусу."""
 
-    return [
-        operation
-        for operation in operations
-        if operation.get("state") == state
-    ]
+    return [operation for operation in operations if operation.get("state") == state]
+
 
 def sort_by_date(
     operations: list[dict],
