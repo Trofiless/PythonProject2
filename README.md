@@ -43,6 +43,20 @@ operations = [
 result = sort_by_date(operations)
 print(result)
 
+## Тестирование
+
+Для запуска всех тестов выполните команду:
+poetry run pytest
+
+Проект содержит тесты для следующих модулей:
+
+- masks.py
+- widget.py
+- processing.py
+
+Все тесты написаны с использованием библиотеки pytest.
+
+
 ## Автор
 
 Elena Trofimova-Pavlova
