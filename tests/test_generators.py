@@ -15,16 +15,18 @@ def test_filter_by_currency_not_found(operations):
 
     assert result == []
 
-def test_transaction_descriptions(operations):
-        descriptions = list(transaction_descriptions(operations))
 
-        assert descriptions == [
-            "Перевод организации",
-            "Перевод со счета на счет",
-            "Перевод со счета на счет",
-            "Перевод с карты на карту",
-            "Перевод организации",
-        ]
+def test_transaction_descriptions(operations):
+    descriptions = list(transaction_descriptions(operations))
+
+    assert descriptions == [
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет",
+        "Перевод с карты на карту",
+        "Перевод организации",
+    ]
+
 
 def test_card_number_generator():
     cards = list(card_number_generator(1, 3))
@@ -35,10 +37,12 @@ def test_card_number_generator():
         "0000 0000 0000 0003",
     ]
 
+
 def test_card_number_generator_one_number():
     cards = list(card_number_generator(5, 5))
 
     assert cards == ["0000 0000 0000 0005"]
+
 
 def test_card_number_generator_format():
     card = next(card_number_generator(1, 1))
