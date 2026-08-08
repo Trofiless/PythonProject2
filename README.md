@@ -43,6 +43,42 @@ operations = [
 result = sort_by_date(operations)
 print(result)
 
+## Модуль generators
+
+В проект был добавлен модуль generators.py, содержащий генераторы для обработки банковских операций.
+
+### Реализованные функции
+
+#### filter_by_currency(transactions, currency)
+
+Возвращает генератор транзакций, валюта которых соответствует указанной.
+
+Пример:
+usd_transactions = filter_by_currency(transactions, "USD")
+
+for transaction in usd_transactions:
+    print(transaction)
+#### transaction_descriptions(transactions)
+
+Возвращает описания транзакций по одному.
+
+Пример:
+descriptions = transaction_descriptions(transactions)
+
+for description in descriptions:
+    print(description)
+#### card_number_generator(start, stop)
+
+Генерирует номера банковских карт в формате XXXX XXXX XXXX XXXX.
+
+Пример:
+for card in card_number_generator(1, 3):
+    print(card)
+Результат:
+0000 0000 0000 0001
+0000 0000 0000 0002
+0000 0000 0000 0003
+
 ## Тестирование
 
 Для запуска всех тестов выполните команду:
