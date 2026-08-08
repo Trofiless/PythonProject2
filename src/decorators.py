@@ -1,6 +1,7 @@
 from functools import wraps
 import logging
 
+
 def log(filename=None):
     def decorator(func):
         @wraps(func)
@@ -17,14 +18,12 @@ def log(filename=None):
                 logger.info(f"{func.__name__} ok")
                 return result
             except Exception as error:
-                logger.error(
-                    f"{func.__name__} error: {type(error).__name__}. "
-                    f"Inputs: {args}, {kwargs}"
-                )
+                logger.error(f"{func.__name__} error: {type(error).__name__}. " f"Inputs: {args}, {kwargs}")
                 raise
             finally:
                 logger.removeHandler(handler)
                 handler.close()
-        return wrapper
-    return decorator
 
+        return wrapper
+
+    return decorator

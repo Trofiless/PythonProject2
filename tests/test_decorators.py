@@ -2,15 +2,18 @@ import pytest
 
 from src.decorators import log
 
+
 def test_log_success(capsys):
     @log()
     def add(x, y):
         return x + y
+
     result = add(1, 2)
     captured = capsys.readouterr()
 
     assert result == 3
     assert "add ok" in captured.err or "add ok" in captured.out
+
 
 def test_log_error(capsys):
     @log()
