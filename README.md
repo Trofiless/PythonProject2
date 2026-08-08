@@ -43,6 +43,27 @@ operations = [
 result = sort_by_date(operations)
 print(result)
 
+## Декоратор логирования
+
+Декоратор log автоматически записывает информацию о выполнении функции.
+
+Если передан параметр filename, логи сохраняются в указанный файл. Если filename не задан, логи выводятся в консоль.
+
+Пример использования:
+
+```python
+from src.decorators import log
+
+
+@log(filename="my_log.txt")
+def my_function(x, y):
+    return x + y
+
+
+my_function(1, 2)
+```
+
+
 ## Тестирование
 
 Для запуска всех тестов выполните команду:
