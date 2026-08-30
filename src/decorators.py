@@ -1,5 +1,5 @@
-from functools import wraps
 import logging
+from functools import wraps
 from typing import Any
 
 
@@ -7,8 +7,10 @@ def log(filename: str | None = None) -> Any:
     """Логирует успешное выполнение функции и возникающие ошибки."""
 
     def decorator(func: Any) -> Any:
+        """Создает обертку для логирования функции."""
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
+            """Логирует выполнение функции и возникающие ошибки."""
             logger = logging.getLogger(func.__name__)
             logger.setLevel(logging.INFO)
             handler: logging.Handler
