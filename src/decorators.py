@@ -8,6 +8,7 @@ def log(filename: str | None = None) -> Any:
 
     def decorator(func: Any) -> Any:
         """Создает обертку для логирования функции."""
+
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             """Логирует выполнение функции и возникающие ошибки."""
