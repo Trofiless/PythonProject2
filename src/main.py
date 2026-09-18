@@ -1,11 +1,9 @@
 from src.processing import (
     filter_by_state,
-    sort_by_date,
     process_bank_search,
+    sort_by_date,
 )
-
 from src.reader import get_transactions_csv, get_transactions_excel
-
 from src.utils import load_operations
 
 
