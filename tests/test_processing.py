@@ -1,4 +1,9 @@
-from src.processing import filter_by_state, sort_by_date
+from src.processing import (
+    filter_by_state,
+    process_bank_operations,
+    process_bank_search,
+    sort_by_date,
+)
 
 operations = [
     {
@@ -51,3 +56,56 @@ def test_sort_by_date_asc():
 
     assert result[0]["date"] == "2023-01-01T00:00:00"
     assert result[-1]["date"] == "2025-05-10T10:00:00"
+
+
+search_operations = [
+    {
+        "id": 1,
+        "description": "Перевод с карты на карту",
+    },
+    {
+        "id": 2,
+        "description": "Оплата продуктов",
+    },
+    {
+        "id": 3,
+        "description": "Перевод организации",
+    },
+]
+
+
+def test_process_bank_search_found():
+
+    result = process_bank_search(search_operations, "перевод")
+
+    assert len(result) == 2
+
+    assert result[0]["id"] == 1
+
+    assert result[1]["id"] == 3
+
+
+def test_process_bank_search_case_insensitive():
+
+    result = process_bank_search(search_operations, "ПЕРЕВОД")
+
+    assert len(result) == 2
+
+
+def test_process_bank_search_not_found():
+
+    result = process_bank_search(search_operations, "зарплата")
+
+    assert result == []
+
+
+def test_process_bank_operations():
+
+    categories = ["Перевод", "Оплата"]
+
+    result = process_bank_operations(search_operations, categories)
+
+    assert result == {
+        "Перевод": 2,
+        "Оплата": 1,
+    }
